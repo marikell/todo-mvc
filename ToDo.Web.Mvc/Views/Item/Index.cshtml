@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ToDo.Domain.Entities.Item>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Adicionar tarefa</a>
+</p>
+
+<table id="item" class="table">
+    <thead>
+        <tr class="">
+            <th>Descrição</th>
+            <th>Data de criação</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Description</td>
+                <td>@item.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                <td><input type="checkbox" disabled @( item.Done ? "checked" : "" ) action="" /></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function add() {
+        window.location.href = ''
+    }
+</script>
